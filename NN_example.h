@@ -5,8 +5,8 @@
 // define NN architecture
 #define INPUT_SIZE 1
 #define OUTPUT_SIZE 1
-#define LEARNING_RATE 0.01
-#define EPOCHS 10
+#define LEARNING_RATE 0.1
+#define EPOCHS 1000
 
 // training data
 double training_data[][INPUT_SIZE] = {
@@ -89,17 +89,27 @@ void train(double inputs[], double target) {
     bias += LEARNING_RATE * error;
 }
 
+// Display parameters
+void print_parameters() {
+    printf("Weights: ");
+    for (int i = 0; i < INPUT_SIZE; i++) {
+        printf("%lf ", weights[i]);
+    }
+    printf("\nBias: %lf\n", bias);
+}
+
 // training the Neural network
-void trainingNN(void *arg) {
+void trainingNN(void) {
     for (int epoch = 0; epoch < EPOCHS; epoch++) {
         for (int i = 0; i < sizeof(training_data) / sizeof(training_data[0]); i++) {
             train(training_data[i], targets[i]);
         }
     }
+    print_parameters();
 }
 
 // test the NN
-void testNN(void *arg) {
+void testNN(void) {
     for (int i = 0; i < sizeof(test_data) / sizeof(test_data[0]); i++) {
         float prediction = predict(test_data[i]);
         printf("Input: [%lf], Target: %lf, Prediction: %lf\n", 
