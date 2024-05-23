@@ -5,8 +5,8 @@
 // define NN architecture
 #define INPUT_SIZE 1
 #define OUTPUT_SIZE 1
-#define LEARNING_RATE 0.1
-#define EPOCHS 1000
+#define LEARNING_RATE 0.01
+#define EPOCHS 10000
 
 // training data
 double training_data[][INPUT_SIZE] = {
@@ -37,6 +37,7 @@ double targets[] = {
     81,82,83,84,85,86,87,88,89,90
 };
 
+/*
 // test data
 double test_data[][INPUT_SIZE] = {
 	{1.738352154},	{1.843936529},	{1.948227644},	{2.045393705},	{2.145127026},	{2.254323512},
@@ -45,6 +46,11 @@ double test_data[][INPUT_SIZE] = {
 	{3.633737892}
 };
 double test_targets[] = {0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90};
+*/
+
+double test_data[][INPUT_SIZE] = {{2.123057855}};
+double test_targets[] = {18};
+
 
 // leakyReLu activation function
 double activation(double x) {
